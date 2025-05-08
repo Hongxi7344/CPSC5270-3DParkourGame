@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1fnmntbyjrh5"]
+
+[ext_resource type="Script" uid="uid://c76r7wff4485e" path="res://steve.gd" id="1_bh3ft"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bh3ft"]
+albedo_color = Color(0.93, 0.093, 0.9021, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bh3ft"]
+material = SubResource("StandardMaterial3D_bh3ft")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bh3ft"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bh3ft"]
+
+[node name="Steve" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.429595, 0)
+script = ExtResource("1_bh3ft")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bh3ft")
+
+[node name="Face" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.401665, 0, 0, 0, -2.24388e-09, 0.496973, 0, -0.051334, -2.17234e-08, 0, 0.384402, -0.538062)
+mesh = SubResource("CylinderMesh_bh3ft")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bh3ft")
+
+[node name="Camera_Controller" type="Node3D" parent="."]
+top_level = true
+
+[node name="Camera_Target" type="Node3D" parent="Camera_Controller"]
+transform = Transform3D(1, 0, 0, 0, 0.982858, 0.184363, 0, -0.184363, 0.982858, 0, 4.5762, 11.7807)
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Controller/Camera_Target"]
+transform = Transform3D(1, 0, 0, 0, 0.997609, 0.0691123, 0, -0.0691123, 0.997609, 0, -0.767996, -6.82601)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
