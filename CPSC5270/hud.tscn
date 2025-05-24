@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmedrlp3ml1ce"]
+
+[ext_resource type="Script" uid="uid://cc38eiwqlli8c" path="res://hud.gd" id="1_8sq4i"]
+[ext_resource type="Texture2D" uid="uid://b6dwquo8ujf0v" path="res://Assets/Images/hud_coin.png" id="1_64ctp"]
+[ext_resource type="FontFile" uid="uid://bq88t6meetgq7" path="res://Assets/Fonts/FrancoisOne-Regular.ttf" id="2_64ctp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2snw"]
+bg_color = Color(0, 0, 0, 0.380392)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Animation" id="Animation_8sq4i"]
+resource_name = "flash_and_scale"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0.2, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_640wx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2258"]
+_data = {
+&"RESET": SubResource("Animation_640wx"),
+&"flash_and_scale": SubResource("Animation_8sq4i")
+}
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_8sq4i")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 12.0
+offset_top = 10.0
+offset_right = 224.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2snw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 13.0
+offset_top = 23.0
+offset_right = 82.0
+offset_bottom = 92.0
+texture = ExtResource("1_64ctp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 91.0
+offset_top = 33.0
+offset_right = 113.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0.724387, 0.425957, 0.147571, 1)
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 30
+text = "X"
+
+[node name="CoinsLabel" type="Label" parent="."]
+offset_left = 127.0
+offset_top = 14.0
+offset_right = 196.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.724387, 0.425957, 0.147571, 1)
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 55
+text = "##"
+
+[node name="CoinsLabelAnimator" type="AnimationPlayer" parent="CoinsLabel"]
+libraries = {
+&"": SubResource("AnimationLibrary_a2258")
+}
+autoplay = "flash_and_scale"
