@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://drtv02jkiqhww"]
+
+[ext_resource type="Shader" uid="uid://ccx8yhey5eaqf" path="res://Shaders/glow_platform_shader.gdshader" id="1_yll8r"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_yll8r")
+shader_parameter/glow_color = Color(0.95, 0.8132, 0.266, 1)
+shader_parameter/glow_strength = 2.5

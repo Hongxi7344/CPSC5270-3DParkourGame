@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cka6iskdvni4s"]
+
+[ext_resource type="Shader" uid="uid://b78gl4g6msjsw" path="res://Shaders/coin_shader.gdshader" id="1_v6n6p"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_v6n6p")
+shader_parameter/pulse_speed = 10.0
+shader_parameter/base_color = Vector3(2, 4, 0)
+shader_parameter/min_emission = 0.4
+shader_parameter/max_emission_boost = 5.0

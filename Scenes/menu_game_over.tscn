@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://jfdhevv1rsex"]
+
+[ext_resource type="Script" uid="uid://c52m81sfnkhxk" path="res://Scripts/menu_game_over.gd" id="1_bcjj4"]
+[ext_resource type="FontFile" uid="uid://bloi4niwa8v8b" path="res://Assets/Fonts/KiriFont.ttf" id="1_clmc2"]
+[ext_resource type="Texture2D" uid="uid://c3senvo4xg75s" path="res://Assets/Images/imageScreen-gameover.png" id="2_bcjj4"]
+[ext_resource type="FontFile" uid="uid://bq88t6meetgq7" path="res://Assets/Fonts/FrancoisOne-Regular.ttf" id="3_oyw1m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1jju"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[node name="MenuGameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bcjj4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -11.0
+offset_right = 1167.0
+offset_bottom = 676.0
+color = Color(0.25, 0.01, 0.134, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 39.0
+offset_right = 847.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.96, 0.0192, 0.0348798, 1)
+theme_override_colors/font_shadow_color = Color(0.9, 0.8508, 0.162, 1)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("1_clmc2")
+theme_override_font_sizes/font_size = 80
+text = "GAME OVER"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 121.0
+offset_right = 1015.0
+offset_bottom = 557.0
+texture = ExtResource("2_bcjj4")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 558.0
+offset_right = 687.0
+offset_bottom = 638.0
+theme_override_colors/icon_hover_color = Color(0.968627, 0.905882, 0.027451, 1)
+theme_override_colors/font_color = Color(0.14902, 0.129412, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.976471, 0.976471, 0.976471, 1)
+theme_override_fonts/font = ExtResource("3_oyw1m")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_s1jju")
+text = "MAIN MENU"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

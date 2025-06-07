@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxdgjs0bf8eu5"]
+
+[ext_resource type="Texture2D" uid="uid://d4bgpahdwnkwc" path="res://Assets/Images/imageScreen-win.png" id="1_41y0q"]
+[ext_resource type="Script" uid="uid://di8aia8kjf2u6" path="res://Scripts/menu_win.gd" id="1_crd58"]
+[ext_resource type="FontFile" uid="uid://bq88t6meetgq7" path="res://Assets/Fonts/FrancoisOne-Regular.ttf" id="2_crd58"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ab32k"]
+bg_color = Color(0, 0, 0, 0)
+border_color = Color(0, 0, 0, 0)
+
+[node name="MenuWin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_crd58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -11.0
+offset_right = 1164.0
+offset_bottom = 664.0
+color = Color(0.0470588, 0.611765, 0.431373, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1035.0
+offset_top = 20.0
+offset_right = 1125.0
+offset_bottom = 69.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -8.0
+offset_right = 1163.0
+offset_bottom = 547.0
+texture = ExtResource("1_41y0q")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 560.0
+offset_right = 704.0
+offset_bottom = 642.0
+theme_override_colors/icon_hover_color = Color(0.968627, 0.905882, 0.027451, 1)
+theme_override_colors/font_color = Color(0.14902, 0.129412, 0.8, 1)
+theme_override_colors/font_pressed_color = Color(0.976471, 0.976471, 0.976471, 1)
+theme_override_fonts/font = ExtResource("2_crd58")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_ab32k")
+text = "MAIN MENU"
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
