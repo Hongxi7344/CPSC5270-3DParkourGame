@@ -4,7 +4,7 @@ extends Node
 signal coins_updated(new_value: int)
 var coins := 0
 
-const NUM_COINS_TO_WIN = 65
+const NUM_COINS_TO_WIN = 30
 
 func add_coin():
 	coins += 1
